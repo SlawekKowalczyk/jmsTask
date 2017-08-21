@@ -19,9 +19,9 @@ import static pl.hussar.JmsConfig.*;
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = WebMvcAutoConfiguration.class)
-public class MainApplication {
+public class Application {
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(MainApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
         JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
         jmsTemplate.convertAndSend(TOPIC, readFile("excercise-1.xml"));
     }
@@ -30,7 +30,7 @@ public class MainApplication {
 
         StringBuilder result = new StringBuilder("");
 
-        ClassLoader classLoader = MainApplication.class.getClassLoader();
+        ClassLoader classLoader = Application.class.getClassLoader();
         File file = new File(classLoader.getResource(fileName).getFile());
 
         try (Scanner scanner = new Scanner(file)) {
