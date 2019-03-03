@@ -9,9 +9,6 @@ import org.springframework.jms.config.JmsListenerContainerFactory;
 
 import javax.jms.ConnectionFactory;
 
-/**
- * @author Sławomir Kowalczyk.
- */
 @Configuration
 @EnableJms
 public class JmsConfig {
@@ -26,16 +23,12 @@ public class JmsConfig {
     }
 
     @Bean
-    public TestListner testListner1() {
-        return new TestListner();
+    public TestListener testListner1() {
+        return new TestListener();
     }
 
     @Bean
-    public TestListner testListner2() {
-        return new TestListner();
-    }
-    @Bean
-    public TestListner testListner3() {
-        return new TestListner();
+    public TestListener testListner2() {
+        return new TestListener();
     }
 }

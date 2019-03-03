@@ -13,22 +13,19 @@ import java.util.Scanner;
 
 import static pl.hussar.JmsConfig.*;
 
-/**
- * @author Sławomir Kowalczyk.
- */
-
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = WebMvcAutoConfiguration.class)
 public class Application {
     public static void main(String[] args) {
+        final String FILE_NAME = "exercise-1.xml";
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
         JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
-        jmsTemplate.convertAndSend(TOPIC, readFile("excercise-1.xml"));
+        jmsTemplate.convertAndSend(TOPIC, readFile(FILE_NAME));
     }
 
     private static String readFile(String fileName) {
 
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
 
         ClassLoader classLoader = Application.class.getClassLoader();
         File file = new File(classLoader.getResource(fileName).getFile());
